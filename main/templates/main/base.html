@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock%}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-mb-4 mb-3 bg-white-1 border-bottom">
+        <h5 class="header-settings">FakeCSV</h5>
+        <nav class="d-inline-flex mt-2 mt-md-1 ms-md-auto">
+            {% if user.is_authenticated %}
+            <a class="my-button-style" href="{% url 'generate_users' %}">Генератор</a>
+            <a class="my-button-style" href="{% url 'home' %}">Скачать SVC</a>
+            <a class="my-button-style" href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+                <a class="my-button-style" href="{% url 'login' %}">Войти</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock%}
+    </div>
+
+    <script src="{% static 'taskmanager/static/js/script.js' %}"></script>
+</body>
+</html>

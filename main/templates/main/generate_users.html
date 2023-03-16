@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1 style="margin-bottom: 20px;">Генератор пользовательских данных</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group" >
+            <label for="num_users" style="margin-bottom: 20px;" >Количество пользователей:</label>
+            <input type="number" id="num_users" name="num_users" min="1" max="1000">
+        </div>
+        <button type="submit" class="btn btn-primary">Сгенерировать</button>
+    </form>
+{% endblock %}
